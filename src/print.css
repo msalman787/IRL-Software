@@ -1,0 +1,17 @@
+@media print {
+    .print * {
+    visibility: hidden !important;
+    display: none !important;
+    margin-top: -10% !important;
+    }
+    .inputClass {
+        border: none !important;
+        text-align:  center !important;
+    }
+    .noteClass {
+        border: none !important;
+    }
+    .table-column-to-hide {
+        display: none !important;
+    }
+}
