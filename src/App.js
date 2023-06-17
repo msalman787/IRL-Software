@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { jsPDF } from "jspdf"; 
+import { jsPDF } from "jspdf";
 import "./print.css";
 
 const App = () => {
@@ -19,21 +19,20 @@ const App = () => {
   };
 
   const handleToggleImage = () => {
-    if(imageVisible){
+    if (imageVisible) {
       setImageVisible(!imageVisible);
-    }else{
+    } else {
       setImageVisible(true);
     }
   };
 
   const handleCenterPlate = () => {
-    if(centerPlate === "2.5rem"){
+    if (centerPlate === "2.5rem") {
       setCenterPlate("0px");
-    }else{
+    } else {
       setCenterPlate("2.5rem");
     }
   };
-  
 
   const handleTopFontSizeChange = (event) => {
     const newSize = parseInt(event.target.value);
@@ -65,97 +64,86 @@ const App = () => {
     }
   };
 
-  // const handleDownloadPDF = () => {
-  //   const doc = new jsPDF({
-  //     orientation: "landscape",
-  //     unit: "px",
-  //     format: [520, 111],
-  //   });
-
-  //   const borderWidth = 5; // Customize the border width in pixels
-
-  //   const canvas = document.createElement("canvas");
-  //   canvas.width = 520;
-  //   canvas.height = 111;
-  //   const context = canvas.getContext("2d");
-
-  //   // Draw the white background
-  //   context.fillStyle = "white";
-  //   context.fillRect(0, 0, 520, 111);
-
-  //   const logoImage = new Image();
-  //   logoImage.src = "blue_irl.png";
-  //   logoImage.onload = () => {
-  //     // Add the border
-  //     context.strokeStyle = "black";
-  //     context.lineWidth = borderWidth;
-  //     context.strokeRect(
-  //       borderWidth / 2,
-  //       borderWidth / 2,
-  //       520 - borderWidth,
-  //       111 - borderWidth
-  //     );
-
-  //     // Add the logo image to the canvas
-  //     context.drawImage(logoImage, 0, 0, 57, 111);
-
-  //     const textX = 57; // Start position for text
-
-  //     context.font = `bold ${topfontSize}px ${selectedFont}`;
-  //     context.fillStyle = "black";
-  //     context.textAlign = "center"; // Center align the text
-  //     context.fillText(countyText, textX + 231, 25); // Center horizontally at x=288
-
-  //     context.font = `bold ${fontSize}px ${selectedFont}`;
-  //     context.fillText(RegistrationPlateNoText, textX + 231, 80); // Center horizontally at x=288
-
-  //     // Export the canvas as a Blob
-  //     return new Promise((resolve) => {
-  //       canvas.toBlob(
-  //         (blob) => {
-  //           if (blob) {
-  //             // Create an image element from the Blob
-  //             const image = new Image();
-  //             image.src = URL.createObjectURL(blob);
-  //             image.onload = () => {
-  //               // Add the image to the PDF without the border
-  //               doc.addImage(
-  //                 image,
-  //                 "JPEG",
-  //                 borderWidth / 2,
-  //                 borderWidth / 2,
-  //                 520 - borderWidth,
-  //                 111 - borderWidth
-  //               );
-
-  //               // Save the PDF
-  //               doc.save("registration.pdf");
-
-  //               // Resolve the Promise
-  //               resolve();
-  //             };
-  //           }
-  //         },
-  //         "image/jpeg",
-  //         0.9
-  //       );
-  //     });
-  //   };
-  // };
-
   const handleDownloadPDF = () => {
-      window.print();
+    const doc = new jsPDF({
+      orientation: "landscape",
+      unit: "px",
+      format: [520, 111],
+    });
+
+    const length = selectedBorder;
+    const numericLength = (selectedBorder === "none" ? 0 : length.match(/^(\d+)/)[0] )
+
+    const borderWidth = numericLength;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 520;
+    canvas.height = 111;
+    const context = canvas.getContext("2d");
+
+    // Draw the white background
+    context.fillStyle = "white";
+    context.fillRect(0, 0, 520, 111);
+
+    const logoImage = new Image();
+    logoImage.src = imageUrl;
+    logoImage.onload = () => {
+      // Add the border
+      context.strokeStyle = "black";
+      context.lineWidth = borderWidth;
+      context.strokeRect(
+        borderWidth / 2,
+        borderWidth / 2,
+        520 - borderWidth,
+        111 - borderWidth
+      );
+
+      // Add the logo image to the canvas
+      context.drawImage(logoImage, 0, 0, 57, 111);
+
+      const textX = 57; // Start position for text
+
+      context.font = `bold ${topfontSize}px ${selectedFont}`;
+      context.fillStyle = "black";
+      context.textAlign = "center"; // Center align the text
+      context.fillText(countyText, textX + 231, 25); // Center horizontally at x=288
+
+      context.font = `bold ${fontSize}px ${selectedFont}`;
+      context.fillText(RegistrationPlateNoText, textX + 231, 80); // Center horizontally at x=288
+
+      // Add the canvas as an image to the PDF
+      doc.addImage(
+        canvas.toDataURL("image/png"),
+        "PNG",
+        borderWidth / 2,
+        borderWidth / 2,
+        520 - borderWidth,
+        111 - borderWidth,
+        undefined,
+        "FAST",
+        0,
+        600 // Set the DPI value to 600 for higher quality
+      );
+
+      // Save the PDF
+      doc.save("registration.pdf");
+    };
   };
 
+  const handleWindowsDownloadPDF = () => {
+      window.print();
+  };
 
   return (
     <div>
       <div className="print">
         <h1>Ireland Vehicle Registration Plate</h1>
       </div>
-      <div className="print" > 
+
+      <div className="print">
         <button onClick={handleChangeImage}>Change Image</button>
       </div>
+
       <div className="print">
         <label>Registration Plate No.</label>
         <input
@@ -164,6 +152,7 @@ const App = () => {
           onChange={handleRegistrationPlateNoTextChange}
         />
       </div>
+
       <div className="print">
         <label htmlFor="font-size-input">
           Registration Plate Font Size: {fontSize}px
@@ -177,6 +166,7 @@ const App = () => {
           onChange={handleFontSizeChange}
         />
       </div>
+
       <div className="print">
         <label>Country Text:</label>
         <input
@@ -185,6 +175,7 @@ const App = () => {
           onChange={handleCountyTextChange}
         />
       </div>
+
       <div className="print">
         <label>Font:</label>
         <select value={selectedFont} onChange={handleFontChange}>
@@ -264,25 +255,26 @@ const App = () => {
             borderRadius: "12px",
           }}
         >
-          {imageVisible && (<div
-            style={{
-              width: "10%",
-              height: "100%",
-              position: "absolute",
-              // backgroundColor:`${imageUrl === "blue_irl.png"?"#0f4add":"black"}`, 
-              left: "0",
-            }}
-          >
-            <img
-              src={imageUrl}
-              alt="IRL"
+          {imageVisible && (
+            <div
               style={{
-                width: "100%",
+                width: "10%",
                 height: "100%",
-                borderRadius: "8px",
+                position: "absolute",
+                // backgroundColor:`${imageUrl === "blue_irl.png"?"#0f4add":"black"}`,
+                left: "0",
               }}
-            />
-          </div>
+            >
+              <img
+                src={imageUrl}
+                alt="IRL"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
           )}
           <div
             style={{
@@ -314,7 +306,10 @@ const App = () => {
         </div>
       </div>
       <div className="print">
-        <button onClick={handleDownloadPDF}>Download PDF</button>
+        <button onClick={handleDownloadPDF}>Exact Size Download PDF</button>
+      </div>
+      <div className="print">
+        <button onClick={handleWindowsDownloadPDF}>Download PDF</button>
       </div>
     </div>
   );
