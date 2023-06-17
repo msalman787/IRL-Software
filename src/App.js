@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 import "./print.css";
 
 const App = () => {
@@ -63,76 +64,87 @@ const App = () => {
       setImageUrl(newImageUrl);
     }
   };
+// my old pdf 
+  // const handleDownloadPDF = () => {
+  //   const doc = new jsPDF({
+  //     orientation: "landscape",
+  //     unit: "px",
+  //     format: [520, 111],
+  //   });
 
-  const handleDownloadPDF = () => {
-    const doc = new jsPDF({
-      orientation: "landscape",
-      unit: "px",
-      format: [520, 111],
+  //   const length = selectedBorder;
+  //   const numericLength = (selectedBorder === "none" ? 0 : length.match(/^(\d+)/)[0] )
+
+  //   const borderWidth = numericLength;
+
+  //   const canvas = document.createElement("canvas");
+  //   canvas.width = 520;
+  //   canvas.height = 111;
+  //   const context = canvas.getContext("2d");
+
+  //   // Draw the white background
+  //   context.fillStyle = "white";
+  //   context.fillRect(0, 0, 520, 111);
+
+  //   const logoImage = new Image();
+  //   logoImage.src = imageUrl;
+  //   logoImage.onload = () => {
+  //     // Add the border
+  //     context.strokeStyle = "black";
+  //     context.lineWidth = borderWidth;
+  //     context.strokeRect(
+  //       borderWidth / 2,
+  //       borderWidth / 2,
+  //       520 - borderWidth,
+  //       111 - borderWidth
+  //     );
+
+  //     // Add the logo image to the canvas
+  //     context.drawImage(logoImage, 0, 0, 57, 111);
+
+  //     const textX = 57; // Start position for text
+
+  //     context.font = `bold ${topfontSize}px ${selectedFont}`;
+  //     context.fillStyle = "black";
+  //     context.textAlign = "center"; // Center align the text
+  //     context.fillText(countyText, textX + 231, 25); // Center horizontally at x=288
+
+  //     context.font = `bold ${fontSize}px ${selectedFont}`;
+  //     context.fillText(RegistrationPlateNoText, textX + 231, 80); // Center horizontally at x=288
+
+  //     // Add the canvas as an image to the PDF
+  //     doc.addImage(
+  //       canvas.toDataURL("image/png"),
+  //       "PNG",
+  //       borderWidth / 2,
+  //       borderWidth / 2,
+  //       520 - borderWidth,
+  //       111 - borderWidth,
+  //       undefined,
+  //       "FAST",
+  //       0,
+  //       1200 // Set the DPI value to 600 for higher quality
+  //     );
+
+  //     // Save the PDF
+  //     doc.save("registration.pdf");
+  //   };
+  // };
+
+  const handleDownloadmakePDF = () => {
+    const divElement = document.getElementById("pdfDiv");
+
+    html2canvas(divElement, { scale: 4 }).then((canvas) => {
+      const imageData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("l", "px", [520, 111]); // Set orientation and dimensions
+      pdf.addImage(imageData, "PNG", 0, 0, 520, 111, undefined, "FAST", 0, 600);
+      pdf.save("irl_plate.pdf");
     });
-
-    const length = selectedBorder;
-    const numericLength = (selectedBorder === "none" ? 0 : length.match(/^(\d+)/)[0] )
-
-    const borderWidth = numericLength;
-
-    const canvas = document.createElement("canvas");
-    canvas.width = 520;
-    canvas.height = 111;
-    const context = canvas.getContext("2d");
-
-    // Draw the white background
-    context.fillStyle = "white";
-    context.fillRect(0, 0, 520, 111);
-
-    const logoImage = new Image();
-    logoImage.src = imageUrl;
-    logoImage.onload = () => {
-      // Add the border
-      context.strokeStyle = "black";
-      context.lineWidth = borderWidth;
-      context.strokeRect(
-        borderWidth / 2,
-        borderWidth / 2,
-        520 - borderWidth,
-        111 - borderWidth
-      );
-
-      // Add the logo image to the canvas
-      context.drawImage(logoImage, 0, 0, 57, 111);
-
-      const textX = 57; // Start position for text
-
-      context.font = `bold ${topfontSize}px ${selectedFont}`;
-      context.fillStyle = "black";
-      context.textAlign = "center"; // Center align the text
-      context.fillText(countyText, textX + 231, 25); // Center horizontally at x=288
-
-      context.font = `bold ${fontSize}px ${selectedFont}`;
-      context.fillText(RegistrationPlateNoText, textX + 231, 80); // Center horizontally at x=288
-
-      // Add the canvas as an image to the PDF
-      doc.addImage(
-        canvas.toDataURL("image/png"),
-        "PNG",
-        borderWidth / 2,
-        borderWidth / 2,
-        520 - borderWidth,
-        111 - borderWidth,
-        undefined,
-        "FAST",
-        0,
-        600 // Set the DPI value to 600 for higher quality
-      );
-
-      // Save the PDF
-      doc.save("registration.pdf");
-    };
   };
-
-  const handleWindowsDownloadPDF = () => {
-      window.print();
-  };
+  // Windows print
+  // const handleWindowsDownloadPDF = () => {
+  //     window.print();
+  // };
 
   return (
     <div>
@@ -239,6 +251,7 @@ const App = () => {
           <h2>Registration Plate Preview:</h2>
         </div>
         <div
+          id="pdfDiv"
           style={{
             border: `${
               selectedBorder === "none"
@@ -261,7 +274,7 @@ const App = () => {
                 width: "10%",
                 height: "100%",
                 position: "absolute",
-                // backgroundColor:`${imageUrl === "blue_irl.png"?"#0f4add":"black"}`,
+                backgroundColor:`${imageUrl === "blue_irl.png"?"#0f4add":"black"}`,
                 left: "0",
               }}
             >
@@ -306,11 +319,14 @@ const App = () => {
         </div>
       </div>
       <div className="print">
+        <button onClick={handleDownloadmakePDF}>Download  PDF</button>
+      </div>
+      {/* <div className="print">
         <button onClick={handleDownloadPDF}>Exact Size Download PDF</button>
       </div>
       <div className="print">
         <button onClick={handleWindowsDownloadPDF}>Download PDF</button>
-      </div>
+      </div> */}
     </div>
   );
 };
