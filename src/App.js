@@ -64,7 +64,7 @@ const App = () => {
       setImageUrl(newImageUrl);
     }
   };
-// my old pdf 
+  // my old pdf
   // const handleDownloadPDF = () => {
   //   const doc = new jsPDF({
   //     orientation: "landscape",
@@ -148,108 +148,16 @@ const App = () => {
 
   return (
     <div>
-      <div className="print">
-        <h1>Ireland Vehicle Registration Plate</h1>
-      </div>
-
-      <div className="print">
-        <button onClick={handleChangeImage}>Change Image</button>
-      </div>
-
-      <div className="print">
-        <label>Registration Plate No.</label>
-        <input
-          type="text"
-          value={RegistrationPlateNoText}
-          onChange={handleRegistrationPlateNoTextChange}
-        />
-      </div>
-
-      <div className="print">
-        <label htmlFor="font-size-input">
-          Registration Plate Font Size: {fontSize}px
-        </label>
-        <input
-          type="range"
-          id="font-size-input"
-          min="10"
-          max="80"
-          value={fontSize}
-          onChange={handleFontSizeChange}
-        />
-      </div>
-
-      <div className="print">
-        <label>Country Text:</label>
-        <input
-          type="text"
-          value={countyText}
-          onChange={handleCountyTextChange}
-        />
-      </div>
-
-      <div className="print">
-        <label>Font:</label>
-        <select value={selectedFont} onChange={handleFontChange}>
-          <option value="Verdana">Verdana</option>
-          <option value="Arial">Arial</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Courier New">Courier New</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Tahoma">Tahoma</option>
-          <option value="Impact">Impact</option>
-          <option value="Comic Sans MS">Comic Sans MS</option>
-          <option value="Trebuchet MS">Trebuchet MS</option>
-          <option value="Arial Black">Arial Black</option>
-          <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-          <option value="Palatino Linotype">Palatino Linotype</option>
-          <option value="Garamond">Garamond</option>
-          <option value="Bookman">Bookman</option>
-          <option value="Copperplate">Copperplate</option>
-          <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
-        </select>
-      </div>
-
-      <div className="print">
-        <label htmlFor="font-size-input">
-          Top Plate Font Size: {topfontSize}px
-        </label>
-        <input
-          type="range"
-          id="font-size-input"
-          min="10"
-          max="80"
-          value={topfontSize}
-          onChange={handleTopFontSizeChange}
-        />
-      </div>
-
-      <div className="print">
-        <label>Border Style:</label>
-        <select value={selectedBorder} onChange={handleBorderChange}>
-          <option value="none">none</option>
-          <option value="1mm">1mm</option>
-          <option value="2mm">2mm</option>
-          <option value="3mm">3mm</option>
-          <option value="4mm">4mm</option>
-          <option value="5mm">5mm</option>
-          <option value="6mm">6mm</option>
-          <option value="7mm">7mm</option>
-        </select>
-      </div>
-
-      <div className="print">
-        <button onClick={handleToggleImage}>Hide Image</button>
-      </div>
-
-      <div className="print">
-        <button onClick={handleCenterPlate}>Center Plate</button>
+      <div className="print flex justify-center mb-4">
+        <h1
+          className="text-5xl font-bold text-center"
+          style={{ fontFamily: "Arial, sans-serif" }}
+        >
+          Registration Plate Preview
+        </h1>
       </div>
 
       <div>
-        <div className="print">
-          <h2>Registration Plate Preview:</h2>
-        </div>
         <div
           id="pdfDiv"
           style={{
@@ -261,12 +169,14 @@ const App = () => {
             height: "111px",
             width: "520px",
             display: "flex",
+            background: "white",
             justifyContent: "center",
             alignItems: "center",
             position: "relative",
             margin: "auto",
             borderRadius: "12px",
           }}
+          className="border border-gray-300 flex justify-center items-center relative mx-auto rounded"
         >
           {imageVisible && (
             <div
@@ -274,9 +184,12 @@ const App = () => {
                 width: "10%",
                 height: "100%",
                 position: "absolute",
-                backgroundColor:`${imageUrl === "blue_irl.png"?"#0f4add":"black"}`,
+                backgroundColor: `${
+                  imageUrl === "blue_irl.png" ? "#0f4add" : "black"
+                }`,
                 left: "0",
               }}
+              className="w-1/10 h-full absolute bg-blue-500"
             >
               <img
                 src={imageUrl}
@@ -286,6 +199,7 @@ const App = () => {
                   height: "100%",
                   borderRadius: "8px",
                 }}
+                className="w-full h-full rounded"
               />
             </div>
           )}
@@ -296,6 +210,7 @@ const App = () => {
               flexDirection: "column",
               alignItems: "center",
             }}
+            className="ml-auto flex flex-col items-center"
           >
             <span
               style={{
@@ -303,6 +218,7 @@ const App = () => {
                 fontFamily: `${selectedFont}`,
                 fontWeight: "bold",
               }}
+              className="font-bold"
             >
               {countyText}
             </span>
@@ -312,21 +228,157 @@ const App = () => {
                 fontFamily: `${selectedFont}`,
                 fontWeight: "bold",
               }}
+              className="font-bold"
             >
               {RegistrationPlateNoText}
             </span>
           </div>
         </div>
       </div>
-      <div className="print">
-        <button onClick={handleDownloadmakePDF}>Download  PDF</button>
+
+      <div className="print mt-4 sm:flex justify-center">
+        <div className="flex justify-start items-center space-x-4 ">
+          <div>
+            <label className="text-lg">Registration Plate No</label>
+            <br />
+            <input
+              type="text"
+              value={RegistrationPlateNoText}
+              onChange={handleRegistrationPlateNoTextChange}
+              className="border border-gray-300 py-2 px-4 rounded"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="font-size-input" className="text-lg">
+              Registration Plate Font Size: {fontSize}px
+            </label>
+            <input
+              type="range"
+              id="font-size-input"
+              min="10"
+              max="80"
+              value={fontSize}
+              onChange={handleFontSizeChange}
+              className="w-full bg-gradient-to-r from-gray-200 to-gray-300 range-thumb:bg-gray-400 range-thumb:border-gray-400 range-thumb:border-opacity-50 range-thumb:ring-2 range-thumb:ring-gray-400 range-thumb:ring-opacity-50 range-track:bg-gray-300 rounded"
+            />
+          </div>
+        </div>
       </div>
-      {/* <div className="print">
-        <button onClick={handleDownloadPDF}>Exact Size Download PDF</button>
+
+      <div className="print sm:flex justify-center">
+        <div className="flex justify-start items-center space-x-4 ">
+          <div style={{marginLeft: "-4rem"}}>
+            <label className="text-lg">Top Text</label>
+            <br />
+            <input
+              type="text"
+              value={countyText}
+              onChange={handleCountyTextChange}
+              className="border border-gray-300 py-2 px-4 rounded"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="font-size-input" className="text-lg">
+              Top Plate Font Size: {topfontSize}px
+            </label>
+            <input
+              type="range"
+              id="font-size-input"
+              min="10"
+              max="80"
+              value={topfontSize}
+              onChange={handleTopFontSizeChange}
+              className="w-full"
+            />
+          </div>
+        </div>
       </div>
-      <div className="print">
-        <button onClick={handleWindowsDownloadPDF}>Download PDF</button>
-      </div> */}
+
+      <div className="print sm:flex justify-center">
+        <div className="flex justify-start items-center space-x-4 ">
+          <div style={{marginLeft: "-18rem"}}>
+            <label className="text-lg">Font Family</label>
+            <br />
+            <select
+              value={selectedFont}
+              onChange={handleFontChange}
+              className="border border-gray-300 py-2 px-4 rounded"
+            >
+              <option value="Verdana">Verdana</option>
+              <option value="Arial">Arial</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Courier New">Courier New</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Tahoma">Tahoma</option>
+              <option value="Impact">Impact</option>
+              <option value="Comic Sans MS">Comic Sans MS</option>
+              <option value="Trebuchet MS">Trebuchet MS</option>
+              <option value="Arial Black">Arial Black</option>
+              <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+              <option value="Palatino Linotype">Palatino Linotype</option>
+              <option value="Garamond">Garamond</option>
+              <option value="Bookman">Bookman</option>
+              <option value="Copperplate">Copperplate</option>
+              <option value="Franklin Gothic Medium">
+                Franklin Gothic Medium
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label className="text-lg">Border Style</label>
+            <br />
+            <select
+              value={selectedBorder}
+              onChange={handleBorderChange}
+              className="border border-gray-300 py-2 px-4 rounded "
+            >
+              <option value="none">none</option>
+              <option value="1mm">1mm</option>
+              <option value="2mm">2mm</option>
+              <option value="3mm">3mm</option>
+              <option value="4mm">4mm</option>
+              <option value="5mm">5mm</option>
+              <option value="6mm">6mm</option>
+              <option value="7mm">7mm</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="print mt-4">
+        <div className="flex justify-center space-x-4">
+          <button
+            className="bg-gradient-to-r from-blue-500 to-green-500 hover:bg-gradient-to-r hover:from-blue-700 hover:to-green-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleChangeImage}
+          >
+            Change Image
+          </button>
+
+          <button
+            className="bg-gradient-to-r from-red-500 to-yellow-500 hover:bg-gradient-to-r hover:from-red-700 hover:to-yellow-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleToggleImage}
+          >
+            Hide Image
+          </button>
+
+          <button
+            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-r hover:from-purple-700 hover:to-pink-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleCenterPlate}
+          >
+            Center Plate
+          </button>
+
+          <button
+            className="bg-gradient-to-r from-indigo-500 to-teal-500 hover:bg-gradient-to-r hover:from-indigo-700 hover:to-teal-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleDownloadmakePDF}
+          >
+            Download PDF
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
