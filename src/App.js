@@ -87,6 +87,7 @@ const App = () => {
         <h1>Ireland Vehicle Registration Plate</h1>
       </div>
       <div
+        className="container"
         id="pdfDiv"
         style={{
           border: `${
@@ -109,10 +110,8 @@ const App = () => {
               width: "10%",
               height: "100%",
               position: "absolute",
-              backgroundColor: `${
-                imageUrl === "blue_irl.png" ? "#0f4add" : "black"
-              }`,
               left: "0",
+              backgroundColor: selectedBorder !== "none" ? (imageUrl === "blue_irl.png" ? "#0f4add" : "black") : "transparent",
             }}
           >
             <img
@@ -259,10 +258,6 @@ const App = () => {
             <option value="1mm">1mm</option>
             <option value="2mm">2mm</option>
             <option value="3mm">3mm</option>
-            <option value="4mm">4mm</option>
-            <option value="5mm">5mm</option>
-            <option value="6mm">6mm</option>
-            <option value="7mm">7mm</option>
           </select>
         </div>
       </div>
