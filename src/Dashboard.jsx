@@ -99,17 +99,8 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div
-        style={{
-          backgroundColor: "white",
-          width: "520px",
-          height: "111px",
-          padding: "10px",
-          margin:"auto"
-        }}
-        id="pdfDiv"
-      >
         <div
+          id="pdfDiv"
           className="container"
           style={{
             border: `${
@@ -117,8 +108,8 @@ const Dashboard = () => {
                 ? "none"
                 : `${selectedBorder} solid black`
             } `,
-            height: "105px",
-            width: "510px",
+            width: "520px",
+            height: "111px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -182,7 +173,6 @@ const Dashboard = () => {
             </span>
           </div>
         </div>
-      </div>
 
       <div className="container">
         <div className="container-child">
@@ -198,6 +188,9 @@ const Dashboard = () => {
           <label>Registration Plate Font:</label>
           <select value={selectedFont} onChange={handleFontChange}>
             <option value="Verdana">Verdana</option>
+            <option value="Metro">Metro</option>
+            <option value="German">German</option>
+            <option value="Standard Irish">Standard Irish</option>
             <option value="Arial">Arial</option>
             <option value="Times New Roman">Times New Roman</option>
             <option value="Courier New">Courier New</option>
@@ -247,6 +240,9 @@ const Dashboard = () => {
           <label>Top Font:</label>
           <select value={topselectedFont} onChange={handleTopFontChange}>
             <option value="Arial">Arial</option>
+            <option value="Metro">Metro</option>
+            <option value="German">German</option>
+            <option value="Standard Irish">Standard Irish</option>
             <option value="Verdana">Verdana</option>
             <option value="Times New Roman">Times New Roman</option>
             <option value="Courier New">Courier New</option>
@@ -264,6 +260,10 @@ const Dashboard = () => {
             <option value="Franklin Gothic Medium">
               Franklin Gothic Medium
             </option>
+            <option value="Metro">Metro</option>
+            <option value="German">German</option>
+            <option value="Standard Irish">Standard Irish</option>
+
           </select>
         </div>
 

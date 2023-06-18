@@ -1,6 +1,17 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
+
+@font-face {
+  font-family: 'Metro';
+  src: url('../public/fonts/MicrogrammaD-BoldExte.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Standard Irish';
+  src: url('../public/fonts/MANDATOR.otf') format('truetype');
+}
+@font-face {
+  font-family: 'German';
+  src: url('../public/fonts/CargoTwoSF.ttf') format('truetype');
+}
 
 body {
   margin: 0;
