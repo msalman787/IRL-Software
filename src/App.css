@@ -3,9 +3,11 @@
   justify-content: center;
   margin-top: 1rem;
 }
+
 .container-child {
   margin-right: 1rem;
 }
+
 .button {
   color: rgb(0, 0, 0);
   padding: 10px;
@@ -25,4 +27,24 @@
 
 label {
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .container-child {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 8px;
+    font-size: 12px;
+    margin-left: 10px;  
+
+  }
 }
