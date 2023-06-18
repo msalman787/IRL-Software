@@ -79,7 +79,7 @@ const Dashboard = () => {
   const handleDownloadmakePDF = () => {
     const divElement = document.getElementById("pdfDiv");
 
-    html2canvas(divElement, { scale: 4 }).then((canvas) => {
+    html2canvas(divElement, { scale: 20 }).then((canvas) => {
       const imageData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("l", "px", [520, 111]);
       pdf.addImage(imageData, "PNG", 0, 0, 520, 111, undefined, "FAST", 0, 600);
@@ -89,87 +89,98 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="container"> 
+      <div className="container">
         <div>
           <h1>Ireland Vehicle Registration Plate</h1>
         </div>
-        <div style={{margin:"25px"}}>
+        <div style={{ margin: "25px" }}>
           <button className="button" onClick={handleLogout}>
             Logout
           </button>
         </div>
       </div>
-
       <div
-        className="container"
-        id="pdfDiv"
         style={{
-          border: `${
-            selectedBorder === "none" ? "none" : `${selectedBorder} solid black`
-          } `,
-          height: "111px",
-          width: "520px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          margin: "auto",
-          borderRadius: "12px",
           backgroundColor: "white",
+          width: "520px",
+          height: "111px",
+          padding: "10px",
+          margin:"auto"
         }}
+        id="pdfDiv"
       >
-        {imageVisible && (
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              position: "absolute",
-              left: "0",
-              backgroundColor:
-                selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "blue_irl.png"
-                    ? "#0f4add"
-                    : "black"
-                  : "transparent",
-            }}
-          >
-            <img
-              src={imageUrl}
-              alt="IRL"
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "8px",
-              }}
-            />
-          </div>
-        )}
         <div
+          className="container"
           style={{
-            marginLeft: `${centerPlate}`,
+            border: `${
+              selectedBorder === "none"
+                ? "none"
+                : `${selectedBorder} solid black`
+            } `,
+            height: "105px",
+            width: "510px",
             display: "flex",
-            flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
+            position: "relative",
+            margin: "auto",
+            borderRadius: "12px",
+            backgroundColor: "white",
           }}
         >
-          <span
+          {imageVisible && (
+            <div
+              style={{
+                width: "10%",
+                height: "100%",
+                position: "absolute",
+                left: "0",
+                backgroundColor:
+                  selectedBorder !== "none" && selectedBorder !== "0.5mm"
+                    ? imageUrl === "blue_irl.png"
+                      ? "#0f4add"
+                      : "black"
+                    : "transparent",
+              }}
+            >
+              <img
+                src={imageUrl}
+                alt="IRL"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+          )}
+          <div
             style={{
-              fontSize: `${topfontSize}px`,
-              fontFamily: `${topselectedFont}`,
-              fontWeight: "bold",
+              marginLeft: `${centerPlate}`,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            {countyText}
-          </span>
-          <span
-            style={{
-              fontSize: `${fontSize}px`,
-              fontFamily: `${selectedFont}`,
-              fontWeight: "bold",
-            }}
-          >
-            {RegistrationPlateNoText}
-          </span>
+            <span
+              style={{
+                fontSize: `${topfontSize}px`,
+                fontFamily: `${topselectedFont}`,
+                fontWeight: "bold",
+              }}
+            >
+              {countyText}
+            </span>
+            <span
+              style={{
+                fontSize: `${fontSize}px`,
+                fontFamily: `${selectedFont}`,
+                fontWeight: "bold",
+              }}
+            >
+              {RegistrationPlateNoText}
+            </span>
+          </div>
         </div>
       </div>
 
