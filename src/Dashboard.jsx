@@ -89,11 +89,12 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center mb-2">
-        <div className="flex justify-between w-full">
-          <div></div>
-          <h1 className="text-center text-2xl ">Ireland Vehicle Registration Plate</h1>
-          <button className="button self-start" onClick={handleLogout}>
+      <div className="container"> 
+        <div>
+          <h1>Ireland Vehicle Registration Plate</h1>
+        </div>
+        <div style={{margin:"25px"}}>
+          <button className="button" onClick={handleLogout}>
             Logout
           </button>
         </div>
