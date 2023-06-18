@@ -111,7 +111,7 @@ const App = () => {
               height: "100%",
               position: "absolute",
               left: "0",
-              backgroundColor: selectedBorder !== "none" ? (imageUrl === "blue_irl.png" ? "#0f4add" : "black") : "transparent",
+              backgroundColor: selectedBorder !== "none" && selectedBorder !== "0.5mm" ? (imageUrl === "blue_irl.png" ? "#0f4add" : "black") : "transparent"
             }}
           >
             <img
@@ -255,9 +255,15 @@ const App = () => {
           <label>Border Style:</label>
           <select value={selectedBorder} onChange={handleBorderChange}>
             <option value="none">none</option>
-            <option value="1mm">1mm</option>
-            <option value="2mm">2mm</option>
-            <option value="3mm">3mm</option>
+            <option value="0.5mm">0.5 mm</option>
+            <option value="1mm">1 mm</option>
+            <option value="1.5mm">1.5 mm</option>
+            <option value="2mm">2 mm</option>
+            <option value="2.5mm">2.5 mm</option>
+            <option value="3mm">3 mm</option>
+            {/* <option value="1mm">1 mm</option>
+            <option value="2mm">2 mm</option>
+            <option value="3mm">3 mm</option> */}
           </select>
         </div>
       </div>
