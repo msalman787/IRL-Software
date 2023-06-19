@@ -89,9 +89,11 @@ label {
 }
 
 .country span {
-  line-height: 1.2; 
+  display: inline-block;
+  transform: scale(.5, 1);
 }
 
-.plate span {
-  line-height: 1.2; 
+.plate span{
+  display: inline-block;
+  transform: scale(.5, 1);
 }
