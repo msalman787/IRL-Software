@@ -57,13 +57,13 @@ label {
 }
 
 .left {
-  width: 10%;
+  width: 9%;
   height: 100%;
   border-radius: 7px 0 0 7px ;
 }
 
 .right {
-  width: 90%;
+  width: 91%;
   height: 100%;
   background-color: white;
   display: flex;

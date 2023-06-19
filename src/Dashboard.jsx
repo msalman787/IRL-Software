@@ -14,9 +14,9 @@ const Dashboard = () => {
   const [topfontSize, setTopFontSize] = useState(5);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
-  const [imageUrl, setImageUrl] = useState("irl_black_logo.png");
+  const [imageUrl, setImageUrl] = useState("BlACKIRL.png");
   const [imageVisible, setImageVisible] = useState(true);
-  const [centerPlate, setCenterPlate] = useState("90%");
+  const [centerPlate, setCenterPlate] = useState("91%");
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -37,10 +37,10 @@ const Dashboard = () => {
   };
 
   const handleCenterPlate = () => {
-    if (centerPlate === "90%") {
+    if (centerPlate === "91%") {
       setCenterPlate("100%");
     } else {
-      setCenterPlate("90%");
+      setCenterPlate("91%");
     }
   };
 
@@ -79,9 +79,9 @@ const Dashboard = () => {
   };
 
   const handleChangeImage = () => {
-    const newImageUrl = "irl_blue_logo.png";
+    const newImageUrl = "BlUEIRL.png";
     if (imageUrl === newImageUrl) {
-      setImageUrl("irl_black_logo.png");
+      setImageUrl("BlACKIRL.png");
     } else {
       setImageUrl(newImageUrl);
     }
@@ -125,7 +125,7 @@ const Dashboard = () => {
                 height: "100%",
                 backgroundColor:
                 selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "irl_blue_logo.png"
+                  ? imageUrl === "BlUEIRL.png"
                     ? "#0f4add"
                     : "black"
                   : "transparent",
@@ -136,7 +136,7 @@ const Dashboard = () => {
 
         <div className="right" style={{
           width:`${centerPlate}`,
-          borderRadius:`${centerPlate === "100%" ? "7px": "0 7px 7px 0"}`
+          borderRadius:`${centerPlate === "100%" ? "0 7px 7px 0": "0 7px 7px 0"}`
           }}>
           <div className="country">
             <span
@@ -203,7 +203,7 @@ const Dashboard = () => {
               left: "0",
               backgroundColor:
                 selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "irl_blue_logo.png"
+                  ? imageUrl === "BlUEIRL.png"
                     ? "#0f4add"
                     : "black"
                   : "transparent",
