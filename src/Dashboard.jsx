@@ -11,12 +11,12 @@ const Dashboard = () => {
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
   const [fontSize, setFontSize] = useState(10);
-  const [topfontSize, setTopFontSize] = useState(2);
+  const [topfontSize, setTopFontSize] = useState(5);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
   const [imageUrl, setImageUrl] = useState("irl_black_logo.png");
   const [imageVisible, setImageVisible] = useState(true);
-  const [centerPlate, setCenterPlate] = useState("2.5rem");
+  const [centerPlate, setCenterPlate] = useState("90%");
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -37,10 +37,10 @@ const Dashboard = () => {
   };
 
   const handleCenterPlate = () => {
-    if (centerPlate === "2.5rem") {
-      setCenterPlate("0px");
+    if (centerPlate === "90%") {
+      setCenterPlate("100%");
     } else {
-      setCenterPlate("2.5rem");
+      setCenterPlate("90%");
     }
   };
 
@@ -107,7 +107,7 @@ const Dashboard = () => {
           border: `${
             selectedBorder === "none" ? "none" : `${selectedBorder} solid black`
           } `,
-          borderRadius: `${selectedBorder === "none" ? "6px" : "12px"} `,
+          borderRadius: `${selectedBorder === "none" ? "6px" : "10px"} `,
         }}
       >
         <div
@@ -134,7 +134,10 @@ const Dashboard = () => {
           )}
         </div>
 
-        <div className="right">
+        <div className="right" style={{
+          width:`${centerPlate}`,
+          borderRadius:`${centerPlate === "100%" ? "7px": "0 7px 7px 0"}`
+          }}>
           <div className="country">
             <span
               style={{
@@ -153,6 +156,8 @@ const Dashboard = () => {
                 marginBottom:`${bottomfontSizeMargin}px`,
                 fontSize: `${fontSize}mm`,
                 fontFamily: `${selectedFont}`,
+                display:`${selectedFont === "Standard Irish" ? "inline-block" :""}`,
+                transform: `${selectedFont === "Standard Irish" ? "scale(0.5, 1)" :""}`
               }}
             >
               {RegistrationPlateNoText}

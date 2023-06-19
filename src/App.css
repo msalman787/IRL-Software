@@ -66,13 +66,12 @@ label {
   width: 90%;
   height: 100%;
   background-color: white;
-  border-radius: 0 7px 7px 0;
   display: flex;
   flex-direction: column;
 }
 
 .country {
-  height: 25%;
+  height: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +87,7 @@ label {
   align-items: center;
 }
 
-.country span {
+/* .country span {
   display: inline-block;
   transform: scale(.5, 1);
 }
@@ -96,4 +95,4 @@ label {
 .plate span{
   display: inline-block;
   transform: scale(.5, 1);
-}
+} */
