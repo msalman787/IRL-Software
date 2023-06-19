@@ -12,7 +12,9 @@ const Dashboard = () => {
   const [selectedBorder, setSelectedBorder] = useState("1mm");
   const [fontSize, setFontSize] = useState(50);
   const [topfontSize, setTopFontSize] = useState(16);
-  const [imageUrl, setImageUrl] = useState("black_irl.png");
+  const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
+  const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
+  const [imageUrl, setImageUrl] = useState("irl_black_logo.png");
   const [imageVisible, setImageVisible] = useState(true);
   const [centerPlate, setCenterPlate] = useState("2.5rem");
   const navigate = useNavigate();
@@ -46,6 +48,15 @@ const Dashboard = () => {
     const newSize = parseInt(event.target.value);
     setTopFontSize(newSize);
   };
+  const handleTopFontSizeMarginChange = (event) => {
+    const newSize = parseInt(event.target.value);
+    setTopFontSizeMargin(newSize);
+  };
+
+  const handleBottomFontSizeMarginChange = (event) => {
+    const newSize = parseInt(event.target.value);
+    setBottomFontSizeMargin(newSize);
+  };
 
   const handleRegistrationPlateNoTextChange = (e) => {
     setRegistrationPlateNoText(e.target.value);
@@ -68,9 +79,9 @@ const Dashboard = () => {
   };
 
   const handleChangeImage = () => {
-    const newImageUrl = "blue_irl.png";
+    const newImageUrl = "irl_blue_logo.png";
     if (imageUrl === newImageUrl) {
-      setImageUrl("black_irl.png");
+      setImageUrl("irl_black_logo.png");
     } else {
       setImageUrl(newImageUrl);
     }
@@ -89,6 +100,67 @@ const Dashboard = () => {
 
   return (
     <div>
+      <div
+        id="pdfDiv"
+        className="plate_container"
+        style={{
+          border: `${
+            selectedBorder === "none" ? "none" : `${selectedBorder} solid black`
+          } `,
+          borderRadius: `${selectedBorder === "none" ? "6px" : "12px"} `,
+        }}
+      >
+        <div
+          className="left"
+          style={{
+           backgroundColor:"#fff"
+          }}
+        >
+          {imageVisible && (
+            <img
+              src={imageUrl}
+              alt="IRL"
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundColor:
+                selectedBorder !== "none" && selectedBorder !== "0.5mm"
+                  ? imageUrl === "irl_blue_logo.png"
+                    ? "#0f4add"
+                    : "black"
+                  : "transparent",
+              }}
+            />
+          )}
+        </div>
+
+        <div className="right">
+          <div className="country">
+            <span
+              style={{
+                fontWeight: "bold",
+                marginTop:`${topfontSizeMargin}px`,
+                fontSize: `${topfontSize}px`,
+                fontFamily: `${topselectedFont}`,
+              }}
+              >
+              {countyText}
+            </span>
+          </div>
+          <div className="plate">
+            <span
+              style={{
+                marginBottom:`${bottomfontSizeMargin}px`,
+                fontSize: `${fontSize}px`,
+                fontFamily: `${selectedFont}`,
+              }}
+            >
+              {RegistrationPlateNoText}
+            </span>
+          </div>
+        </div>
+      </div>
+
       <div className="container">
         <div>
           <h1>Ireland Vehicle Registration Plate</h1>
@@ -99,80 +171,77 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-        <div
-          id="pdfDiv"
-          className="container"
-          style={{
-            border: `${
-              selectedBorder === "none"
-                ? "none"
-                : `${selectedBorder} solid black`
-            } `,
-            width: "520px",
-            height: "111px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative",
-            margin: "auto",
-            borderRadius: "12px",
-            backgroundColor: "white",
-          }}
-        >
-          {imageVisible && (
-            <div
-              style={{
-                width: "10%",
-                height: "100%",
-                position: "absolute",
-                left: "0",
-                backgroundColor:
-                  selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                    ? imageUrl === "blue_irl.png"
-                      ? "#0f4add"
-                      : "black"
-                    : "transparent",
-              }}
-            >
-              <img
-                src={imageUrl}
-                alt="IRL"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "8px",
-                }}
-              />
-            </div>
-          )}
+      {/* <div
+        className="container"
+        // id="pdfDiv"
+        style={{
+          border: `${
+            selectedBorder === "none" ? "none" : `${selectedBorder} solid black`
+          } `,
+          width: "520px",
+          height: "111px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          margin: "auto",
+          borderRadius: "12px",
+          backgroundColor: "white",
+        }}
+      >
+        {imageVisible && (
           <div
             style={{
-              marginLeft: `${centerPlate}`,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              width: "10%",
+              height: "100%",
+              position: "absolute",
+              left: "0",
+              backgroundColor:
+                selectedBorder !== "none" && selectedBorder !== "0.5mm"
+                  ? imageUrl === "irl_blue_logo.png"
+                    ? "#0f4add"
+                    : "black"
+                  : "transparent",
             }}
           >
-            <span
+            <img
+              src={imageUrl}
+              alt="IRL"
               style={{
-                fontSize: `${topfontSize}px`,
-                fontFamily: `${topselectedFont}`,
-                fontWeight: "bold",
+                width: "100%",
+                height: "100%",
+                borderRadius: "8px",
               }}
-            >
-              {countyText}
-            </span>
-            <span
-              style={{
-                fontSize: `${fontSize}px`,
-                fontFamily: `${selectedFont}`,
-                fontWeight: "bold",
-              }}
-            >
-              {RegistrationPlateNoText}
-            </span>
+            />
           </div>
+        )}
+        <div
+          style={{
+            marginLeft: `${centerPlate}`,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{
+              fontSize: `${topfontSize}px`,
+              fontFamily: `${topselectedFont}`,
+              fontWeight: "bold",
+            }}
+          >
+            {countyText}
+          </span>
+          <span
+            style={{
+              fontSize: `${fontSize}px`,
+              fontFamily: `${selectedFont}`,
+            }}
+          >
+            {RegistrationPlateNoText}
+          </span>
         </div>
+      </div> */}
 
       <div className="container">
         <div className="container-child">
@@ -219,9 +288,22 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="10"
-            max="80"
+            max="100"
             value={fontSize}
             onChange={handleFontSizeChange}
+          />
+        </div>
+        <div className="container-child">
+          <label htmlFor="font-size-input">
+            Center Plate Font Margin Size: {bottomfontSizeMargin}px
+          </label>
+          <input
+            type="range"
+            id="font-size-input"
+            min="0"
+            max="80"
+            value={bottomfontSizeMargin}
+            onChange={handleBottomFontSizeMarginChange}
           />
         </div>
       </div>
@@ -263,7 +345,6 @@ const Dashboard = () => {
             <option value="Metro">Metro</option>
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
-
           </select>
         </div>
 
@@ -282,6 +363,20 @@ const Dashboard = () => {
         </div>
 
         <div className="container-child">
+          <label htmlFor="font-size-input">
+            Top Plate Font Margin Size: {topfontSizeMargin}px
+          </label>
+          <input
+            type="range"
+            id="font-size-input"
+            min="0"
+            max="80"
+            value={topfontSizeMargin}
+            onChange={handleTopFontSizeMarginChange}
+          />
+        </div>
+
+        <div className="container-child">
           <label>Border Style:</label>
           <select value={selectedBorder} onChange={handleBorderChange}>
             <option value="none">none</option>
@@ -291,9 +386,6 @@ const Dashboard = () => {
             <option value="2mm">2 mm</option>
             <option value="2.5mm">2.5 mm</option>
             <option value="3mm">3 mm</option>
-            {/* <option value="1mm">1 mm</option>
-            <option value="2mm">2 mm</option>
-            <option value="3mm">3 mm</option> */}
           </select>
         </div>
       </div>
