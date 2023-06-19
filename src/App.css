@@ -48,3 +48,50 @@ label {
 
   }
 }
+
+.plate_container {
+  width: 520px;
+  height: 111px;
+  display: flex;
+  margin: auto;
+}
+
+.left {
+  width: 10%;
+  height: 100%;
+  border-radius: 7px 0 0 7px ;
+}
+
+.right {
+  width: 90%;
+  height: 100%;
+  background-color: white;
+  border-radius: 0 7px 7px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.country {
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plate {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.country span {
+  line-height: 1.2; 
+}
+
+.plate span {
+  line-height: 1.2; 
+}
