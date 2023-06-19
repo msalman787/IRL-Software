@@ -10,8 +10,8 @@ const Dashboard = () => {
   const [selectedFont, setSelectedFont] = useState("Verdana");
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
-  const [fontSize, setFontSize] = useState(50);
-  const [topfontSize, setTopFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(10);
+  const [topfontSize, setTopFontSize] = useState(2);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
   const [imageUrl, setImageUrl] = useState("irl_black_logo.png");
@@ -140,7 +140,7 @@ const Dashboard = () => {
               style={{
                 fontWeight: "bold",
                 marginTop:`${topfontSizeMargin}px`,
-                fontSize: `${topfontSize}px`,
+                fontSize: `${topfontSize}mm`,
                 fontFamily: `${topselectedFont}`,
               }}
               >
@@ -151,7 +151,7 @@ const Dashboard = () => {
             <span
               style={{
                 marginBottom:`${bottomfontSizeMargin}px`,
-                fontSize: `${fontSize}px`,
+                fontSize: `${fontSize}mm`,
                 fontFamily: `${selectedFont}`,
               }}
             >
@@ -282,7 +282,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Registration Plate Font Size: {fontSize}px
+            Registration Plate Font Size: {fontSize}mm
           </label>
           <input
             type="range"
@@ -350,12 +350,12 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Top Plate Font Size: {topfontSize}px
+            Top Plate Font Size: {topfontSize}mm
           </label>
           <input
             type="range"
             id="font-size-input"
-            min="10"
+            min="0"
             max="80"
             value={topfontSize}
             onChange={handleTopFontSizeChange}
