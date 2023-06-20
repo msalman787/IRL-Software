@@ -7,11 +7,12 @@ import "./App.css";
 const Dashboard = () => {
   const [RegistrationPlateNoText, setRegistrationPlateNoText] = useState("");
   const [countyText, setCountyText] = useState("");
+  const [transformScaleSize, setTransformScaleSize] = useState("");
   const [selectedFont, setSelectedFont] = useState("Metro");
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
   const [fontSize, setFontSize] = useState(15);
-  const [topfontSize, setTopFontSize] = useState(8);
+  const [topfontSize, setTopFontSize] = useState(16);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
   const [imageUrl, setImageUrl] = useState("black_Irl.png");
@@ -62,6 +63,10 @@ const Dashboard = () => {
 
   const handleRegistrationPlateNoTextChange = (e) => {
     setRegistrationPlateNoText(e.target.value);
+  };
+
+  const handleTransformScaleSizeChange = (e) => {
+    setTransformScaleSize(e.target.value);
   };
 
   const handleCountyTextChange = (e) => {
@@ -177,7 +182,7 @@ const Dashboard = () => {
                 width: "100%",
                 textAlign: "center",
                 transform: `${
-                  selectedFont === "Standard Irish" ? "scale(1.9, 2.63)" : ""
+                  selectedFont === "Standard Irish" ? "scale(1.9, 2.63)" : `scale(${transformScaleSize})  `
                 }`,
               }}
             >
@@ -329,6 +334,16 @@ const Dashboard = () => {
       </div>
 
       <div className="container">
+      <div className="container-child">
+          <label>Transform Scale:</label>
+          <input
+            type="text"
+            value={transformScaleSize}
+            placeholder="1.9, 2.63"
+            onChange={handleTransformScaleSizeChange}
+          />
+        </div>
+
         <div className="container-child">
           <button className="button" onClick={handleToggleImage}>
             Hide Image
