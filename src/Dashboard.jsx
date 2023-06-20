@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
   const [fontSize, setFontSize] = useState(15);
-  const [topfontSize, setTopFontSize] = useState(5);
+  const [topfontSize, setTopFontSize] = useState(8);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
   const [imageUrl, setImageUrl] = useState("black_Irl.png");
@@ -102,7 +102,7 @@ const Dashboard = () => {
 
   return (
     <div>
-       <div className="container">
+      <div className="container">
         <div>
           <h1>Ireland Vehicle Registration Plate</h1>
         </div>
@@ -189,7 +189,7 @@ const Dashboard = () => {
 
       <div className="container">
         <div className="container-child">
-          <label>Registration Plate No:</label>
+          <label>Registration No:</label>
           <input
             type="text"
             value={RegistrationPlateNoText}
@@ -198,7 +198,7 @@ const Dashboard = () => {
         </div>
 
         <div className="container-child">
-          <label>Registration Plate Font:</label>
+          <label>Registration Font:</label>
           <select value={selectedFont} onChange={handleFontChange}>
             <option value="Metro">Metro</option>
             <option value="German">German</option>
@@ -209,7 +209,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Registration Plate Font Size: {fontSize}px
+            Registration Font Size: {fontSize}px
           </label>
           <input
             type="range"
@@ -222,7 +222,7 @@ const Dashboard = () => {
         </div>
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Center Plate Font Margin Size: {bottomfontSizeMargin}px
+            Center Font Margin Size: {bottomfontSizeMargin}px
           </label>
           <input
             type="range"
@@ -237,16 +237,47 @@ const Dashboard = () => {
 
       <div className="container">
         <div className="container-child">
-          <label>Top Text:</label>
-          <input
-            type="text"
-            value={countyText}
-            onChange={handleCountyTextChange}
-          />
+          <label>County Names:</label>
+          <select value={countyText} onChange={handleCountyTextChange}>
+            <option value="">none</option>
+            <option value="CORCAIGH">Co. Cork</option>
+            <option value="AN CLÁR">Co. Clare</option>
+            <option value="AN CABHÁN">Co. Cavan</option>
+            <option value="CEATHARLACH">Co. Carlow</option>
+            <option value="BAILE ÁTHA CLIATH">Co. Dublin</option>
+            <option value="DÚN NA NGALL">Co. Donegal</option>
+            <option value="GAILLIMH">Co. Galway</option>
+            <option value="CILL DARA">Co. Kildare</option>
+            <option value="CILL CHEANNAIGH">Co. Kilkenny</option>
+            <option value="CIARRAI">Co. Kerry</option>
+            <option value="CATHAIR LUIMNI">Limerick City</option>
+            <option value="AN LONGPHORT">Co. Longford</option>
+            <option value="AN LÚ">Co. Louth</option>
+            <option value="LUIMNEACH">Co. Limerick</option>
+            <option value="LIATROIM">Co. Leitrim</option>
+            <option value="LAOIS">Co. Laois</option>
+            <option value="AN MHI">Co. Meath</option>
+            <option value="MUINEACHÁN">Co. Monaghan</option>
+            <option value="MAIGH EO">Co. Mayo</option>
+            <option value="UIBH FHAILI">Co. Offaly</option>
+            <option value="ROS COMÁIN">Co. Roscommon</option>
+            <option value="SLIGEACH">Co. Sligo</option>
+            <option value="TIOBRAID ÁRANN THUAIDH">
+              Co. Tipperary (North Riding)
+            </option>
+            <option value="TIOBRAID ÁRANN THEAS">
+              Co. Tipperary (South Riding)
+            </option>
+            <option value="CATHAIR PHORT LÁIRGE">Waterford City</option>
+            <option value="PHORT LÁIRGE">Co. Waterford</option>
+            <option value="AN IARMHI">Co. Westmeath</option>
+            <option value="CILL MHANTÁIN">Co. Wicklow</option>
+            <option value="LOCH GARMAN">Co. Wexford</option>
+          </select>
         </div>
 
         <div className="container-child">
-          <label>Top Font:</label>
+          <label>County Font:</label>
           <select value={topselectedFont} onChange={handleTopFontChange}>
             <option value="Arial">Arial</option>
             <option value="Metro">Metro</option>
@@ -257,7 +288,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Top Plate Font Size: {topfontSize}px
+          County Font Size: {topfontSize}px
           </label>
           <input
             type="range"
@@ -271,7 +302,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Top Plate Font Margin Size: {topfontSizeMargin}px
+          County Font Margin Size: {topfontSizeMargin}px
           </label>
           <input
             type="range"
