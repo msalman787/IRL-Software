@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [topfontSize, setTopFontSize] = useState(5);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
-  const [imageUrl, setImageUrl] = useState("BlACKIRL.png");
+  const [imageUrl, setImageUrl] = useState("black_Irl.png");
   const [imageVisible, setImageVisible] = useState(true);
   const [centerPlate, setCenterPlate] = useState("91%");
   const navigate = useNavigate();
@@ -79,9 +79,9 @@ const Dashboard = () => {
   };
 
   const handleChangeImage = () => {
-    const newImageUrl = "BlUEIRL.png";
+    const newImageUrl = "blue_Irl.png";
     if (imageUrl === newImageUrl) {
-      setImageUrl("BlACKIRL.png");
+      setImageUrl("black_Irl.png");
     } else {
       setImageUrl(newImageUrl);
     }
@@ -125,7 +125,7 @@ const Dashboard = () => {
                 height: "100%",
                 backgroundColor:
                 selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "BlUEIRL.png"
+                  ? imageUrl === "blue_Irl.png"
                     ? "#0f4add"
                     : "black"
                   : "transparent",
@@ -203,7 +203,7 @@ const Dashboard = () => {
               left: "0",
               backgroundColor:
                 selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "BlUEIRL.png"
+                  ? imageUrl === "blue_Irl.png"
                     ? "#0f4add"
                     : "black"
                   : "transparent",
