@@ -165,7 +165,7 @@ const Dashboard = () => {
                 width: "100%",
                 textAlign: "center",
                 transform: `${
-                  selectedFont === "Standard Irish" ? "scale(1.9, 2.7)" : ""
+                  selectedFont === "Standard Irish" ? "scale(1.9, 2.9)" : ""
                 }`,
               }}
             >
@@ -302,7 +302,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="10"
-            max="100"
+            max="45"
             value={fontSize}
             onChange={handleFontSizeChange}
           />
@@ -315,7 +315,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="0"
-            max="80"
+            max="45"
             value={bottomfontSizeMargin}
             onChange={handleBottomFontSizeMarginChange}
           />
@@ -369,8 +369,8 @@ const Dashboard = () => {
           <input
             type="range"
             id="font-size-input"
-            min="0"
-            max="80"
+            min="10"
+            max="45"
             value={topfontSize}
             onChange={handleTopFontSizeChange}
           />
@@ -384,7 +384,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="0"
-            max="80"
+            max="45"
             value={topfontSizeMargin}
             onChange={handleTopFontSizeMarginChange}
           />
