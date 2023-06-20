@@ -115,8 +115,8 @@ const Dashboard = () => {
         <div
           className="left"
           style={{
-           backgroundColor:"#fff",
-           width:`${centerPlate !== "100%" ? "9% " : "0%"}`,
+            backgroundColor: "#fff",
+            width: `${centerPlate !== "100%" ? "9% " : "0%"}`,
           }}
         >
           {imageVisible && (
@@ -127,40 +127,46 @@ const Dashboard = () => {
                 width: "100%",
                 height: "100%",
                 backgroundColor:
-                selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "blue_Irl.png"
-                    ? "#0f4add"
-                    : "black"
-                  : "transparent",
+                  selectedBorder !== "none" && selectedBorder !== "0.5mm"
+                    ? imageUrl === "blue_Irl.png"
+                      ? "#0f4add"
+                      : "black"
+                    : "transparent",
               }}
             />
           )}
         </div>
 
-        <div className="right" style={{
-          width:`${centerPlate}`,
-          borderRadius:`${centerPlate === "100%" ? " 7px ": "0 7px 7px 0"}`
-          }}>
+        <div
+          className="right"
+          style={{
+            width: `${centerPlate}`,
+            borderRadius: `${centerPlate === "100%" ? " 7px " : "0 7px 7px 0"}`,
+          }}
+        >
           <div className="country">
             <span
               style={{
                 fontWeight: "bold",
-                marginTop:`${topfontSizeMargin}px`,
-                fontSize: `${topfontSize}mm`,
+                marginTop: `${topfontSizeMargin}px`,
+                fontSize: `${topfontSize}px`,
                 fontFamily: `${topselectedFont}`,
               }}
-              >
+            >
               {countyText}
             </span>
           </div>
           <div className="plate">
             <span
               style={{
-                marginBottom:`${bottomfontSizeMargin}px`,
-                fontSize: `${fontSize}mm`,
+                marginBottom: `${bottomfontSizeMargin}px`,
+                fontSize: `${fontSize}px`,
                 fontFamily: `${selectedFont}`,
-                width:"100%",
-                textAlign: "center"
+                width: "100%",
+                textAlign: "center",
+                transform: `${
+                  selectedFont === "Standard Irish" ? "scale(1.9, 3)" : ""
+                }`,
               }}
             >
               {RegistrationPlateNoText}
@@ -290,7 +296,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Registration Plate Font Size: {fontSize}mm
+            Registration Plate Font Size: {fontSize}px
           </label>
           <input
             type="range"
@@ -358,7 +364,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-            Top Plate Font Size: {topfontSize}mm
+            Top Plate Font Size: {topfontSize}px
           </label>
           <input
             type="range"
