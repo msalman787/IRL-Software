@@ -7,10 +7,10 @@ import "./App.css";
 const Dashboard = () => {
   const [RegistrationPlateNoText, setRegistrationPlateNoText] = useState("");
   const [countyText, setCountyText] = useState("");
-  const [selectedFont, setSelectedFont] = useState("Verdana");
+  const [selectedFont, setSelectedFont] = useState("Metro");
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
-  const [fontSize, setFontSize] = useState(10);
+  const [fontSize, setFontSize] = useState(15);
   const [topfontSize, setTopFontSize] = useState(5);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
@@ -102,6 +102,17 @@ const Dashboard = () => {
 
   return (
     <div>
+       <div className="container">
+        <div>
+          <h1>Ireland Vehicle Registration Plate</h1>
+        </div>
+        <div style={{ margin: "25px" }}>
+          <button className="button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      </div>
+
       <div
         id="pdfDiv"
         className="plate_container"
@@ -177,88 +188,6 @@ const Dashboard = () => {
       </div>
 
       <div className="container">
-        <div>
-          <h1>Ireland Vehicle Registration Plate</h1>
-        </div>
-        <div style={{ margin: "25px" }}>
-          <button className="button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </div>
-      {/* <div
-        className="container"
-        // id="pdfDiv"
-        style={{
-          border: `${
-            selectedBorder === "none" ? "none" : `${selectedBorder} solid black`
-          } `,
-          width: "520px",
-          height: "111px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "relative",
-          margin: "auto",
-          borderRadius: "12px",
-          backgroundColor: "white",
-        }}
-      >
-        {imageVisible && (
-          <div
-            style={{
-              width: "10%",
-              height: "100%",
-              position: "absolute",
-              left: "0",
-              backgroundColor:
-                selectedBorder !== "none" && selectedBorder !== "0.5mm"
-                  ? imageUrl === "blue_Irl.png"
-                    ? "#0f4add"
-                    : "black"
-                  : "transparent",
-            }}
-          >
-            <img
-              src={imageUrl}
-              alt="IRL"
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius: "8px",
-              }}
-            />
-          </div>
-        )}
-        <div
-          style={{
-            marginLeft: `${centerPlate}`,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <span
-            style={{
-              fontSize: `${topfontSize}px`,
-              fontFamily: `${topselectedFont}`,
-              fontWeight: "bold",
-            }}
-          >
-            {countyText}
-          </span>
-          <span
-            style={{
-              fontSize: `${fontSize}px`,
-              fontFamily: `${selectedFont}`,
-            }}
-          >
-            {RegistrationPlateNoText}
-          </span>
-        </div>
-      </div> */}
-
-      <div className="container">
         <div className="container-child">
           <label>Registration Plate No:</label>
           <input
@@ -271,27 +200,10 @@ const Dashboard = () => {
         <div className="container-child">
           <label>Registration Plate Font:</label>
           <select value={selectedFont} onChange={handleFontChange}>
-            <option value="Verdana">Verdana</option>
             <option value="Metro">Metro</option>
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
             <option value="Arial">Arial</option>
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Courier New">Courier New</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Tahoma">Tahoma</option>
-            <option value="Impact">Impact</option>
-            <option value="Comic Sans MS">Comic Sans MS</option>
-            <option value="Trebuchet MS">Trebuchet MS</option>
-            <option value="Arial Black">Arial Black</option>
-            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-            <option value="Palatino Linotype">Palatino Linotype</option>
-            <option value="Garamond">Garamond</option>
-            <option value="Bookman">Bookman</option>
-            <option value="Copperplate">Copperplate</option>
-            <option value="Franklin Gothic Medium">
-              Franklin Gothic Medium
-            </option>
           </select>
         </div>
 
@@ -302,8 +214,8 @@ const Dashboard = () => {
           <input
             type="range"
             id="font-size-input"
-            min="10"
-            max="55"
+            min="15"
+            max="65"
             value={fontSize}
             onChange={handleFontSizeChange}
           />
@@ -337,26 +249,6 @@ const Dashboard = () => {
           <label>Top Font:</label>
           <select value={topselectedFont} onChange={handleTopFontChange}>
             <option value="Arial">Arial</option>
-            <option value="Metro">Metro</option>
-            <option value="German">German</option>
-            <option value="Standard Irish">Standard Irish</option>
-            <option value="Verdana">Verdana</option>
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Courier New">Courier New</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Tahoma">Tahoma</option>
-            <option value="Impact">Impact</option>
-            <option value="Comic Sans MS">Comic Sans MS</option>
-            <option value="Trebuchet MS">Trebuchet MS</option>
-            <option value="Arial Black">Arial Black</option>
-            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-            <option value="Palatino Linotype">Palatino Linotype</option>
-            <option value="Garamond">Garamond</option>
-            <option value="Bookman">Bookman</option>
-            <option value="Copperplate">Copperplate</option>
-            <option value="Franklin Gothic Medium">
-              Franklin Gothic Medium
-            </option>
             <option value="Metro">Metro</option>
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
