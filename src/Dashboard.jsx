@@ -165,7 +165,7 @@ const Dashboard = () => {
                 width: "100%",
                 textAlign: "center",
                 transform: `${
-                  selectedFont === "Standard Irish" ? "scale(1.9, 2.9)" : ""
+                  selectedFont === "Standard Irish" ? "scale(1.9, 2.63)" : ""
                 }`,
               }}
             >
