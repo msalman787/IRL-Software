@@ -116,6 +116,7 @@ const Dashboard = () => {
           className="left"
           style={{
             backgroundColor: "#fff",
+            // borderRadius: `${ selectedBorder !== "none" || selectedBorder !== "0.5mm" ? "inherit" : ""} ` ,
             width: `${centerPlate !== "100%" ? "9% " : "0%"}`,
           }}
         >
@@ -302,7 +303,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="10"
-            max="45"
+            max="55"
             value={fontSize}
             onChange={handleFontSizeChange}
           />
@@ -315,7 +316,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="0"
-            max="45"
+            max="55"
             value={bottomfontSizeMargin}
             onChange={handleBottomFontSizeMarginChange}
           />
@@ -370,7 +371,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="10"
-            max="45"
+            max="55"
             value={topfontSize}
             onChange={handleTopFontSizeChange}
           />
@@ -384,7 +385,7 @@ const Dashboard = () => {
             type="range"
             id="font-size-input"
             min="0"
-            max="45"
+            max="55"
             value={topfontSizeMargin}
             onChange={handleTopFontSizeMarginChange}
           />
