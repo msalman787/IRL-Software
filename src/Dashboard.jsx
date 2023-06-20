@@ -38,9 +38,11 @@ const Dashboard = () => {
 
   const handleCenterPlate = () => {
     if (centerPlate === "91%") {
+      setImageVisible(!imageVisible);
       setCenterPlate("100%");
     } else {
       setCenterPlate("91%");
+      setImageVisible(true);
     }
   };
 
@@ -113,7 +115,8 @@ const Dashboard = () => {
         <div
           className="left"
           style={{
-           backgroundColor:"#fff"
+           backgroundColor:"#fff",
+           width:`${centerPlate !== "100%" ? "9% " : "0%"}`,
           }}
         >
           {imageVisible && (
@@ -136,7 +139,7 @@ const Dashboard = () => {
 
         <div className="right" style={{
           width:`${centerPlate}`,
-          borderRadius:`${centerPlate === "100%" ? "0 7px 7px 0": "0 7px 7px 0"}`
+          borderRadius:`${centerPlate === "100%" ? " 7px ": "0 7px 7px 0"}`
           }}>
           <div className="country">
             <span
@@ -156,8 +159,8 @@ const Dashboard = () => {
                 marginBottom:`${bottomfontSizeMargin}px`,
                 fontSize: `${fontSize}mm`,
                 fontFamily: `${selectedFont}`,
-                display:`${selectedFont === "Standard Irish" ? "inline-block" :""}`,
-                transform: `${selectedFont === "Standard Irish" ? "scale(0.5, 1)" :""}`
+                width:"100%",
+                textAlign: "center"
               }}
             >
               {RegistrationPlateNoText}
