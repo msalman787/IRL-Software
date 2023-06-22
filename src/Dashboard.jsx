@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
   const [fontSize, setFontSize] = useState(15);
-  const [topfontSize, setTopFontSize] = useState(16);
+  const [topfontSize, setTopFontSize] = useState(15);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
   const [imageUrl, setImageUrl] = useState("black_Irl.png");
@@ -132,7 +132,6 @@ const Dashboard = () => {
           className="left"
           style={{
             backgroundColor: "#fff",
-            // borderRadius: `${ selectedBorder !== "none" || selectedBorder !== "0.5mm" ? "inherit" : ""} ` ,
             width: `${centerPlate !== "100%" ? "9% " : "0%"}`,
           }}
         >
@@ -143,6 +142,9 @@ const Dashboard = () => {
               style={{
                 width: "100%",
                 height: "100%",
+                borderRadius: `${
+                  selectedBorder === "0.5mm" || selectedBorder === "1mm" ? "4px 0 0 4px" : ""
+                } `,
                 backgroundColor:
                   selectedBorder !== "none" && selectedBorder !== "0.5mm"
                     ? imageUrl === "blue_Irl.png"
@@ -164,7 +166,9 @@ const Dashboard = () => {
           <div className="country">
             <span
               style={{
-                fontWeight: "bold",
+                fontWeight: `${
+                  topselectedFont === "Arial Black" ? "bold" : ""
+                }`,
                 marginTop: `${topfontSizeMargin}px`,
                 fontSize: `${topfontSize}px`,
                 fontFamily: `${topselectedFont}`,
@@ -179,10 +183,15 @@ const Dashboard = () => {
                 marginBottom: `${bottomfontSizeMargin}px`,
                 fontSize: `${fontSize}px`,
                 fontFamily: `${selectedFont}`,
+                fontWeight: `${
+                  topselectedFont === "Arial Black" ? "bold" : ""
+                }`,
                 width: "100%",
                 textAlign: "center",
                 transform: `${
-                  selectedFont === "Standard Irish" ? "scale(1.9, 2.63)" : `scale(${transformScaleSize})  `
+                  selectedFont === "Standard Irish"
+                    ? "scale(1.9, 2.63)"
+                    : `scale(${transformScaleSize})  `
                 }`,
               }}
             >
@@ -209,6 +218,7 @@ const Dashboard = () => {
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
             <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
           </select>
         </div>
 
@@ -285,6 +295,7 @@ const Dashboard = () => {
           <label>County Font:</label>
           <select value={topselectedFont} onChange={handleTopFontChange}>
             <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
             <option value="Metro">Metro</option>
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
@@ -293,7 +304,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-          County Font Size: {topfontSize}px
+            County Font Size: {topfontSize}px
           </label>
           <input
             type="range"
@@ -307,7 +318,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label htmlFor="font-size-input">
-          County Font Margin Size: {topfontSizeMargin}px
+            County Font Margin Size: {topfontSizeMargin}px
           </label>
           <input
             type="range"
@@ -334,7 +345,7 @@ const Dashboard = () => {
       </div>
 
       <div className="container">
-      <div className="container-child">
+        <div className="container-child">
           <label>Transform Scale:</label>
           <input
             type="text"
