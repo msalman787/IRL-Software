@@ -143,7 +143,9 @@ const Dashboard = () => {
                 width: "100%",
                 height: "100%",
                 borderRadius: `${
-                  selectedBorder === "0.5mm" || selectedBorder === "1mm" ? "4px 0 0 4px" : ""
+                  selectedBorder === "0.5mm" || selectedBorder === "1mm"
+                    ? "4px 0 0 4px"
+                    : ""
                 } `,
                 backgroundColor:
                   selectedBorder !== "none" && selectedBorder !== "0.5mm"
@@ -263,29 +265,22 @@ const Dashboard = () => {
             <option value="DÚN NA NGALL">Co. Donegal</option>
             <option value="GAILLIMH">Co. Galway</option>
             <option value="CILL DARA">Co. Kildare</option>
-            <option value="CILL CHEANNAIGH">Co. Kilkenny</option>
-            <option value="CIARRAI">Co. Kerry</option>
-            <option value="CATHAIR LUIMNI">Limerick City</option>
-            <option value="AN LONGPHORT">Co. Longford</option>
-            <option value="AN LÚ">Co. Louth</option>
+            <option value="CILL CHAINNIGH">Co. Kilkenny</option>
+            <option value="CIARRAÍ">Co. Kerry</option>
             <option value="LUIMNEACH">Co. Limerick</option>
+            <option value="AN LONGFORT">Co. Longford</option>
+            <option value="AN LÚ">Co. Louth</option>
             <option value="LIATROIM">Co. Leitrim</option>
             <option value="LAOIS">Co. Laois</option>
-            <option value="AN MHI">Co. Meath</option>
+            <option value="AN MHÍ">Co. Meath</option>
             <option value="MUINEACHÁN">Co. Monaghan</option>
             <option value="MAIGH EO">Co. Mayo</option>
-            <option value="UIBH FHAILI">Co. Offaly</option>
+            <option value="UIBH FHAILÍ">Co. Offaly</option>
             <option value="ROS COMÁIN">Co. Roscommon</option>
             <option value="SLIGEACH">Co. Sligo</option>
-            <option value="TIOBRAID ÁRANN THUAIDH">
-              Co. Tipperary (North Riding)
-            </option>
-            <option value="TIOBRAID ÁRANN THEAS">
-              Co. Tipperary (South Riding)
-            </option>
-            <option value="CATHAIR PHORT LÁIRGE">Waterford City</option>
-            <option value="PHORT LÁIRGE">Co. Waterford</option>
-            <option value="AN IARMHI">Co. Westmeath</option>
+            <option value="TIOBRAID ÁRANN">Co. Tipperary</option>
+            <option value="PORT LÁIRGE">Co. Waterford</option>
+            <option value="AN IARMHÍ">Co. Westmeath</option>
             <option value="CILL MHANTÁIN">Co. Wicklow</option>
             <option value="LOCH GARMAN">Co. Wexford</option>
           </select>
