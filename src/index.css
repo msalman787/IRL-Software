@@ -13,6 +13,16 @@
   src: url('../public/fonts/CargoTwoSF.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Sporty Metro ttf';
+  src: url('../public/fonts/SportyMetroFont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sporty Metro otf';
+  src: url('../public/fonts/SportyMetroFont.otf') format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

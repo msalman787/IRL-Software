@@ -169,7 +169,8 @@ const Dashboard = () => {
             <span
               style={{
                 fontWeight: `${
-                  topselectedFont === "Arial Black" ? "bold" : ""
+                  // topselectedFont === "Arial Black" ? "bold" : ""
+                  "bold" 
                 }`,
                 marginTop: `${topfontSizeMargin}px`,
                 fontSize: `${topfontSize}px`,
@@ -215,8 +216,10 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label>Registration Font:</label>
-          <select value={selectedFont} onChange={handleFontChange}>
+          <select value={selectedFont} style={{width:"200px"}} onChange={handleFontChange}>
             <option value="Metro">Metro</option>
+            <option value="Sporty Metro ttf">Sporty Metro ttf</option>
+            <option value="Sporty Metro otf">Sporty Metro otf</option>
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
             <option value="Arial">Arial</option>
@@ -255,7 +258,7 @@ const Dashboard = () => {
       <div className="container">
         <div className="container-child">
           <label>County Names:</label>
-          <select value={countyText} onChange={handleCountyTextChange}>
+          <select value={countyText} style={{width:"175px"}} onChange={handleCountyTextChange}>
             <option value="">none</option>
             <option value="CORCAIGH">Co. Cork</option>
             <option value="AN CLÁR">Co. Clare</option>
@@ -288,7 +291,7 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label>County Font:</label>
-          <select value={topselectedFont} onChange={handleTopFontChange}>
+          <select value={topselectedFont}style={{width:"175px"}} onChange={handleTopFontChange}>
             <option value="Arial">Arial</option>
             <option value="Arial Black">Arial Black</option>
             <option value="Metro">Metro</option>
@@ -304,7 +307,7 @@ const Dashboard = () => {
           <input
             type="range"
             id="font-size-input"
-            min="10"
+            min="15"
             max="55"
             value={topfontSize}
             onChange={handleTopFontSizeChange}
