@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [topselectedFont, setTopSelectedFont] = useState("Arial");
   const [selectedBorder, setSelectedBorder] = useState("1mm");
   const [fontSize, setFontSize] = useState(15);
-  const [topfontSize, setTopFontSize] = useState(15);
+  const [topfontSize, setTopFontSize] = useState(14);
   const [topfontSizeMargin, setTopFontSizeMargin] = useState(0);
   const [bottomfontSizeMargin, setBottomFontSizeMargin] = useState(0);
   const [imageUrl, setImageUrl] = useState("black_Irl.png");
@@ -88,7 +88,7 @@ const Dashboard = () => {
   const handleChangeImage = () => {
     const newImageUrl = "blue_Irl.png";
     if (imageUrl === newImageUrl) {
-      setImageUrl("black_Irl.png");
+      setImageUrl("black_Irl2.png");
     } else {
       setImageUrl(newImageUrl);
     }
@@ -306,7 +306,7 @@ const Dashboard = () => {
           <input
             type="range"
             id="font-size-input"
-            min="14"
+            min="8"
             max="30"
             value={topfontSize}
             onChange={handleTopFontSizeChange}
