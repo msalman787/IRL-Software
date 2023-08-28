@@ -88,7 +88,7 @@ const Dashboard = () => {
   const handleChangeImage = () => {
     const newImageUrl = "blue_Irl.png";
     if (imageUrl === newImageUrl) {
-      setImageUrl("black_Irl2.png");
+      setImageUrl("black_Irl.png");
     } else {
       setImageUrl(newImageUrl);
     }
