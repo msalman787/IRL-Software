@@ -14,14 +14,10 @@
 }
 
 @font-face {
-  font-family: 'Sporty Metro ttf';
+  font-family: 'Sporty Metro';
   src: url('../public/fonts/SportyMetroFont.ttf') format('truetype');
 }
 
-@font-face {
-  font-family: 'Sporty Metro otf';
-  src: url('../public/fonts/SportyMetroFont.otf') format('truetype');
-}
 
 body {
   margin: 0;

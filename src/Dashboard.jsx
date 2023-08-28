@@ -218,8 +218,7 @@ const Dashboard = () => {
           <label>Registration Font:</label>
           <select value={selectedFont} style={{width:"200px"}} onChange={handleFontChange}>
             <option value="Metro">Metro</option>
-            <option value="Sporty Metro ttf">Sporty Metro ttf</option>
-            <option value="Sporty Metro otf">Sporty Metro otf</option>
+            <option value="Sporty Metro">Sporty Metro</option>
             <option value="German">German</option>
             <option value="Standard Irish">Standard Irish</option>
             <option value="Arial">Arial</option>
@@ -307,8 +306,8 @@ const Dashboard = () => {
           <input
             type="range"
             id="font-size-input"
-            min="15"
-            max="55"
+            min="14"
+            max="30"
             value={topfontSize}
             onChange={handleTopFontSizeChange}
           />
