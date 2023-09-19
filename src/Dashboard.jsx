@@ -170,7 +170,7 @@ const Dashboard = () => {
               style={{
                 fontWeight: `${
                   // topselectedFont === "Arial Black" ? "bold" : ""
-                  "bold" 
+                  "bold"
                 }`,
                 marginTop: `${topfontSizeMargin}px`,
                 fontSize: `${topfontSize}px`,
@@ -196,6 +196,9 @@ const Dashboard = () => {
                     ? "scale(1.9, 2.63)"
                     : `scale(${transformScaleSize})  `
                 }`,
+                letterSpacing: `${
+                  selectedFont === "Sporty Metro" ? "-3px" : "0px"
+                }`,
               }}
             >
               {RegistrationPlateNoText}
@@ -216,7 +219,11 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label>Registration Font:</label>
-          <select value={selectedFont} style={{width:"200px"}} onChange={handleFontChange}>
+          <select
+            value={selectedFont}
+            style={{ width: "200px" }}
+            onChange={handleFontChange}
+          >
             <option value="Metro">Metro</option>
             <option value="Sporty Metro">Sporty Metro</option>
             <option value="German">German</option>
@@ -257,7 +264,11 @@ const Dashboard = () => {
       <div className="container">
         <div className="container-child">
           <label>County Names:</label>
-          <select value={countyText} style={{width:"175px"}} onChange={handleCountyTextChange}>
+          <select
+            value={countyText}
+            style={{ width: "175px" }}
+            onChange={handleCountyTextChange}
+          >
             <option value="">none</option>
             <option value="CORCAIGH">Co. Cork</option>
             <option value="AN CLÁR">Co. Clare</option>
@@ -290,7 +301,11 @@ const Dashboard = () => {
 
         <div className="container-child">
           <label>County Font:</label>
-          <select value={topselectedFont}style={{width:"175px"}} onChange={handleTopFontChange}>
+          <select
+            value={topselectedFont}
+            style={{ width: "175px" }}
+            onChange={handleTopFontChange}
+          >
             <option value="Arial">Arial</option>
             <option value="Arial Black">Arial Black</option>
             <option value="Metro">Metro</option>
@@ -332,6 +347,8 @@ const Dashboard = () => {
           <select value={selectedBorder} onChange={handleBorderChange}>
             <option value="none">none</option>
             <option value="0.5mm">0.5 mm</option>
+            <option value="0.65mm">0.65 mm</option>
+            <option value="0.75mm">0.75 mm</option>
             <option value="1mm">1 mm</option>
             <option value="1.5mm">1.5 mm</option>
             <option value="2mm">2 mm</option>
